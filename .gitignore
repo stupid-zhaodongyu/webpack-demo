@@ -17,4 +17,6 @@ psd
 thumb
 sketch
 .vs
+dist
+!dist/index.html
 # End of https://www.toptal.com/developers/gitignore/api/react
