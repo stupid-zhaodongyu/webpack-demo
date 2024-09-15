@@ -1,16 +1,33 @@
-import _ from 'lodash';
+import _ from "lodash";
+import numRef from "./ref.json";
 
-function component() {
-    const element = document.createElement('div');
-    const btn = document.createElement('button');
+export function numToWord(num) {
+  return _.reduce(
+    numRef,
+    (accum, ref) => {
+      return ref.num === num ? ref.word : accum;
+    },
+    ""
+  );
+}
 
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+export function wordToNum(word) {
+  return _.reduce(
+    numRef,
+    (accum, ref) => {
+      return ref.word === word && word.toLowerCase() ? ref.num : accum;
+    },
+    -1
+  );
+}
+// function component() {
+//   const element = document.createElement("div");
 
-    btn.innerHTML = 'Click me and check the console!';
-    btn.onclick = printMe;
-    element.appendChild(btn);
-    console.log('restart');
-    return element;
-  }
-  
-  document.body.appendChild(component());
+//   // Lodash, now imported by this script
+//   element.innerHTML = _.join(["Hello", "webpack"], " ");
+//   //   element.onclick = Print.bind(null, 'Hello webpack!');
+
+//   return element;
+// }
+
+// document.body.appendChild(component());
